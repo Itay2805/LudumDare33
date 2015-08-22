@@ -27,6 +27,7 @@ public class SoundClip {
 			clip = AudioSystem.getClip();
 			clip.open(dais);
 			control = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+			Log.info("SoundClip", "Loaded sound " + path + ".");
 		}catch(Exception e) {
 			Log.error("SoundClip", e.getMessage());
 			e.printStackTrace();

@@ -29,8 +29,8 @@ public class AboutState extends State {
 		g.setFont(new Font("arial", Font.BOLD, 30));
 		int strLen = (int) g.getFontMetrics().getStringBounds("This game was made by Itay Almog for ", g).getWidth();
 		g.drawString("This game was made by Itay Almog for ", gc.getWidth() / 2 - strLen / 2, 100);
-		strLen = (int) g.getFontMetrics().getStringBounds("Ludum Dare #33 under ?? Hours", g).getWidth();
-		g.drawString("Ludum Dare #33 under ?? Hours", gc.getWidth() / 2 - strLen / 2, 150);
+		strLen = (int) g.getFontMetrics().getStringBounds("Ludum Dare #33 under 48 Hours", g).getWidth();
+		g.drawString("Ludum Dare #33 under 48 Hours", gc.getWidth() / 2 - strLen / 2, 150);
 		g.drawString("< Back to menu >", 20, gc.getHeight() - 80);
 	}
 

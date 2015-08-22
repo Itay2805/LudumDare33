@@ -4,8 +4,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 import javax.imageio.ImageIO;
 
@@ -41,7 +41,7 @@ public class MapLoader {
 		
 	public void load() {
 		try {
-			BufferedReader in = new BufferedReader(new FileReader("level_" + level + ".map"));
+			BufferedReader in = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/level_" + level + ".map")));
 			w = Integer.parseInt(in.readLine());
 			h = Integer.parseInt(in.readLine());
 			playerX = Integer.parseInt(in.readLine());
