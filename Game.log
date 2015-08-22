@@ -1,0 +1,20 @@
+Info (GameContainer): Running the game engine.
+Info (Window): Window Created.
+Info (Input): Input Handler has started.
+Info (GameContainer): Engine has started.
+Info (MapLoader): grass texture loaded
+Info (MapLoader): dirt texture loaded
+Info (MapLoader): portal texture loaded
+Info (MapLoader): spikes texture loaded
+Info (MapLoader): The map level_0.map has been loaded!
+Info (Player): Loaded player image
+Info (ObjectManager): Added new object Player (tag: player)
+Info (MapLoader): The map level_1.map has been loaded!
+Info (MapLoader): grass texture loaded
+Info (MapLoader): dirt texture loaded
+Info (MapLoader): portal texture loaded
+Info (MapLoader): spikes texture loaded
+Info (MapLoader): The map level_0.map has been loaded!
+Info (Player): Loaded player image
+Info (ObjectManager): Added new object Player (tag: player)
+Info (MapLoader): The map level_1.map has been loaded!
