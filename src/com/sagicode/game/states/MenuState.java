@@ -5,9 +5,12 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
+import javax.swing.JOptionPane;
+
 import com.sagicode.engine.GameContainer;
 import com.sagicode.engine.components.State;
 import com.sagicode.engine.sounds.SoundClip;
+import com.sagicode.game.util.Cheat;
 
 public class MenuState extends State {
 	
@@ -18,13 +21,18 @@ public class MenuState extends State {
 		
 	public MenuState() {
 		select = new SoundClip("/select.wav");
-		options = new MenuOption[2];
+		options = new MenuOption[3];
 		options[0] = new MenuOption("Play") {
 			public void action(GameContainer gc) {
 				gc.getGame().setState(new PlayState(gc));
 			}
 		};
-		options[1] = new MenuOption("About") {
+		options[1] = new MenuOption("Enter Level Code") {
+			public void action(GameContainer gc) {
+				gc.getGame().setState(new PlayState(gc, Cheat.getLevel(JOptionPane.showInputDialog("Enter Level Cheat Code"))));
+			}
+		};
+		options[2] = new MenuOption("About") {
 			public void action(GameContainer gc) {
 				gc.getGame().setState(new AboutState());
 			}
@@ -33,18 +41,17 @@ public class MenuState extends State {
 
 	public void update(GameContainer gc) {
 		if(gc.getInput().isKeyPressed(KeyEvent.VK_DOWN)){
-			index--;
-			select.play();
-		}
-		if(gc.getInput().isKeyPressed(KeyEvent.VK_UP)) {
 			index++;
 			select.play();
 		}
-		if(index > 1) {
-			index = 0;
+		if(gc.getInput().isKeyPressed(KeyEvent.VK_UP)) {
+			index--;
+			select.play();
 		}
 		if(index < 0) {
-			index = 1;
+			index = options.length - 1;
+		}else if(index > options.length - 1) {
+			index = 0;
 		}
 		options[index].setSelected(true);
 		if(gc.getInput().isKeyPressed(KeyEvent.VK_ENTER)) {

@@ -30,7 +30,7 @@ public class ScoreState extends State {
 	public void render(GameContainer gc, Graphics g) {
 		g.setColor(Color.BLACK);
 		g.setFont(new Font("arial", Font.BOLD, 30));
-		if(score == 2) {
+		if(score == 10) {
 			int strLen = (int) g.getFontMetrics().getStringBounds("You won!", g).getWidth();
 			g.drawString("You won!", gc.getWidth() / 2 - strLen / 2, 100);
 		}else {

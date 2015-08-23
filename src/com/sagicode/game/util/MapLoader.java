@@ -1,6 +1,7 @@
 package com.sagicode.game.util;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
@@ -15,13 +16,13 @@ import com.sagicode.game.states.ScoreState;
 
 public class MapLoader {
 	
-	private int x, y, w, h, playerX, playerY;
+	private int w, h, playerX, playerY;
 	private int tileSize = 32;
 	
 	private int[][] map;
 	private int level = 0;
 	
-	private BufferedImage grass, dirt, portal, spikes;
+	private BufferedImage grass, dirt, portal, spikes, portal_frame, stone_bricks, stone;
 	
 	public void init() {
 		try {
@@ -32,6 +33,12 @@ public class MapLoader {
 			portal = ImageIO.read(getClass().getResourceAsStream("/portal.png"));
 			Log.info("MapLoader", "portal texture loaded");
 			spikes = ImageIO.read(getClass().getResourceAsStream("/spikes.png"));
+			Log.info("MapLoader", "spikes texture loaded");
+			portal_frame = ImageIO.read(getClass().getResourceAsStream("/portal_frame.png"));
+			Log.info("MapLoader", "portal_frame texture loaded");
+			stone_bricks = ImageIO.read(getClass().getResourceAsStream("/wood.png"));
+			Log.info("MapLoader", "stone_bricks texture loaded");
+			stone = ImageIO.read(getClass().getResourceAsStream("/stone.png"));
 			Log.info("MapLoader", "spikes texture loaded");
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -68,7 +75,7 @@ public class MapLoader {
 	
 	public void nextLevel(GameContainer gc) {
 		level++;
-		if(level == 2) {
+		if(level == 10) {
 			gc.getGame().setState(new ScoreState(level));
 		}else {
 			load();
@@ -79,20 +86,38 @@ public class MapLoader {
 		for(int x = 0; x < w; x++) {
 			for(int y = 0; y < h; y++) {
 				int tile = map[x][y];
-				if(tile == 1) {
-					g.setColor(new Color(0xff0094FF));
-					g.fillRect(this.x * tileSize + x * tileSize,this.y * tileSize + y * tileSize, tileSize, tileSize);
-				}else if(tile == 0) {
-					g.drawImage(grass, this.x * tileSize + x * tileSize, this.y * tileSize + y * tileSize, null);
-				}else if(tile == 2) {
-					g.drawImage(portal, this.x * tileSize + x * tileSize, this.y * tileSize + y * tileSize, null);
-				}else if(tile == 3) {
-					g.drawImage(dirt, this.x * tileSize + x * tileSize, this.y * tileSize + y * tileSize, null);
-				}else if(tile == 4) {
-					g.drawImage(spikes, this.x * tileSize + x * tileSize, this.y * tileSize + y * tileSize, null);
+				switch(tile) {
+					case 0:
+						g.setColor(new Color(0xff0094FF));
+						g.fillRect(x * tileSize, y * tileSize, tileSize, tileSize);
+						break;
+					case 1:
+						g.drawImage(grass, x * tileSize, y * tileSize, null);
+						break;
+					case 2:
+						g.drawImage(dirt, x * tileSize, y * tileSize, null);
+						break;
+					case 3:
+						g.drawImage(portal, x * tileSize, y * tileSize, null);
+						break;
+					case 4:
+						g.drawImage(portal_frame, x * tileSize, y * tileSize, null);
+						break;
+					case 5:
+						g.drawImage(stone_bricks, x * tileSize, y * tileSize, null);
+						break;
+					case 6:
+						g.drawImage(stone, x * tileSize, y * tileSize, null);
+						break;
+					case 7:
+						g.drawImage(spikes, x * tileSize, y * tileSize, null);
+						break;
 				}
 			}
 		}
+		g.setColor(Color.WHITE);
+		g.setFont(new Font("arial", Font.BOLD, 15));
+		g.drawString("Cheat Code: " + Cheat.getLevel(level), 16, 16);
 	}
 	
 	// Getters And Setters
@@ -107,22 +132,6 @@ public class MapLoader {
 	
 	public int getTileSize() {
 		return tileSize;
-	}
-	
-	public int getX() {
-		return x;
-	}
-	
-	public int getY() {
-		return y;
-	}
-	
-	public void setX(int x) {
-		this.x = x;
-	}
-	
-	public void setY(int y) {
-		this.y = y;
 	}
 	
 	public int getColTile(int x) {
@@ -143,6 +152,10 @@ public class MapLoader {
 	
 	public int getPlayerY() {
 		return playerY * tileSize;
+	}
+	
+	public void setLevel(int level) {
+		this.level = level;
 	}
 	
 }

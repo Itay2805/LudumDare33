@@ -20,9 +20,9 @@ public class Player extends GameObject {
 	
 	private final double MOVE_SPEED = 0.5;
 	private final double MAX_SPEED = 3;
-	private final double MAX_FALLING_SPEED = 11.5;
+	private final double MAX_FALLING_SPEED = 12;
 	private final double STOP_SPEED = 0.44;
-	private final double JUMP_START = -10.5;
+	private final double JUMP_START = -12;
 	private final double GRAVITY = 0.64;
 	
 	private SoundClip jump, dead;
@@ -52,13 +52,21 @@ public class Player extends GameObject {
 	}
 
 	public void update(GameContainer gc) {
-		if(map.getTile((int)(x / map.getTileSize()), (int)(y / map.getTileSize())) == 2) {
-			map.nextLevel(gc);
-			x = map.getPlayerX();
-			y = map.getPlayerY();
-		}else if(map.getTile((int)(x / map.getTileSize()), (int)(y / map.getTileSize())) == 4) {
-			dead.play();
-			gc.getGame().setState(new ScoreState(map.getLevel()));
+		int tile = map.getTile((int)(x / map.getTileSize()), (int)(y / map.getTileSize()));
+		switch(tile) {
+			case 3:
+				map.nextLevel(gc);
+				x = map.getPlayerX();
+				y = map.getPlayerY();
+				dy = 0;
+				dx = 0;
+				break;
+			case 7:
+				dead.play();
+				x = map.getPlayerX();
+				y = map.getPlayerY();
+				gc.getGame().setState(new ScoreState(map.getLevel()));
+				break;
 		}
 		if(gc.getInput().isKey(KeyEvent.VK_SPACE)) {
 			jumping = true;
@@ -160,30 +168,26 @@ public class Player extends GameObject {
 		int rightTile = map.getColTile((int)(x + w / 2) - 1);
 		int topTile = map.getRowTile((int)(y - h / 2));
 		int bottomTile = map.getRowTile((int)(y + h / 2) - 1);
-		topLeft = map.getTile(leftTile, topTile) == 0 || map.getTile(leftTile, topTile) == 3;
-		topRight = map.getTile(rightTile, topTile) == 0 || map.getTile(rightTile, topTile) == 3;
-		bottomLeft = map.getTile(leftTile, bottomTile) == 0 || map.getTile(leftTile, bottomTile) == 3;
-		bottomRight = map.getTile(rightTile, bottomTile) == 0 || map.getTile(rightTile, bottomTile) == 3;
+		topLeft = map.getTile(leftTile, topTile) != 0 && map.getTile(leftTile, topTile) != 3 && map.getTile(leftTile, topTile) != 7;
+		topRight = map.getTile(rightTile, topTile) != 0 && map.getTile(rightTile, topTile) != 3 && map.getTile(rightTile, topTile) != 7;
+		bottomLeft = map.getTile(leftTile, bottomTile) != 0 && map.getTile(leftTile, bottomTile) != 3 && map.getTile(leftTile, bottomTile) != 7;
+		bottomRight = map.getTile(rightTile, bottomTile) != 0 && map.getTile(rightTile, bottomTile) != 3 && map.getTile(rightTile, bottomTile) != 7;
 	}
 	
 	private boolean last;
 
 	public void render(GameContainer gc, Graphics g) {
-		int mx = map.getX() * map.getTileSize();
-		int my = map.getY() * map.getTileSize();
-		//g.setColor(Color.RED);
-		//g.fillRect( (int)(mx + x), (int)(my + y), (int)w, (int)h);
 		if(dx > 0) {
-			g.drawImage(player, (int)(mx + x), (int)(my + y) - 20, null);
+			g.drawImage(player, (int) x, (int) (y - 20), null);
 			last = true;
 		}else if(dx < 0) {
-			g.drawImage(player, (int)(mx + x), (int)(my + y) - 20, (int) (-w), (int) (h),  null);
+			g.drawImage(player, (int)x, (int) (y - 20), (int) -w, (int) h,  null);
 			last = false;
 		}else {
 			if(last) {
-				g.drawImage(player, (int)(mx + x), (int)(my + y) - 20, null);
+				g.drawImage(player, (int) x, (int) (y - 20), null);
 			}else {
-				g.drawImage(player, (int)(mx + x), (int)(my + y) - 20, (int) (-w), (int) (h),  null);
+				g.drawImage(player, (int) x, (int) (y - 20), (int) -w, (int) h,  null);
 			}
 		}
 	}

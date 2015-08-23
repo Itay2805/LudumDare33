@@ -6,10 +6,12 @@ import java.awt.Graphics;
 import com.sagicode.engine.AbstractGame;
 import com.sagicode.engine.GameContainer;
 import com.sagicode.game.states.MenuState;
+import com.sagicode.game.util.Cheat;
 
 public class Game extends AbstractGame {
 	
 	public Game() {
+		Cheat.init();
 		push(new MenuState());
 	}
 
