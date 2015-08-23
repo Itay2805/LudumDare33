@@ -1,5 +1,6 @@
 package com.sagicode.engine.graphics;
 
+import java.applet.Applet;
 import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Dimension;
@@ -35,6 +36,22 @@ public class Window {
 		canvas.createBufferStrategy(2);
 		bs = canvas.getBufferStrategy();
 		Log.info("Window", "Window Created.");
+	}
+	
+	public Window(GameContainer gc, Applet applet) {
+		canvas = new Canvas();
+		Dimension s = new Dimension(gc.getWidth(), gc.getHeight());
+		canvas.setPreferredSize(s);
+		canvas.setMinimumSize(s);
+		canvas.setMaximumSize(s);
+		
+		applet.setLayout(new BorderLayout());
+		applet.add(canvas, BorderLayout.CENTER);
+		applet.setVisible(true);
+		
+		canvas.createBufferStrategy(2);
+		bs = canvas.getBufferStrategy();
+		Log.info("Window", "Applet Created.");
 	}
 	
 	public void cleanUp() {

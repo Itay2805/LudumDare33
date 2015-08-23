@@ -64,8 +64,8 @@ public class MenuState extends State {
 		//g.drawImage(bg, 0, 0, null);
 		g.setColor(Color.BLACK);
 		g.setFont(new Font("arial", Font.BOLD, 30));
-		int strLen = (int) g.getFontMetrics().getStringBounds("Menu", g).getWidth();
-		g.drawString("Menu", gc.getWidth() / 2 - strLen / 2, 150);
+		int strLen = (int) g.getFontMetrics().getStringBounds("Monster Jumper", g).getWidth();
+		g.drawString("Monster Jumper", gc.getWidth() / 2 - strLen / 2, 150);
 		for(int i = 0; i < options.length; i++) {
 			strLen = (int) g.getFontMetrics().getStringBounds(options[i].getTitle(), g).getWidth();
 			g.drawString(options[i].getTitle(), gc.getWidth() / 2 - strLen / 2, 300 + i * 80);

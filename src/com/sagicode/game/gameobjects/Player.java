@@ -68,17 +68,17 @@ public class Player extends GameObject {
 				gc.getGame().setState(new ScoreState(map.getLevel()));
 				break;
 		}
-		if(gc.getInput().isKey(KeyEvent.VK_SPACE)) {
+		if(gc.getInput().isKey(KeyEvent.VK_SPACE) || gc.getInput().isKey(KeyEvent.VK_UP)) {
 			jumping = true;
 		}else {
 			jumping = false;
 		}
-		if(gc.getInput().isKey(KeyEvent.VK_A)) {
+		if(gc.getInput().isKey(KeyEvent.VK_A) || gc.getInput().isKey(KeyEvent.VK_LEFT)) {
 			dx -= MOVE_SPEED;
 			if(dx > -MAX_SPEED) {
 				dx = -MAX_SPEED;
 			}
-		}else if(gc.getInput().isKey(KeyEvent.VK_D)) {
+		}else if(gc.getInput().isKey(KeyEvent.VK_D) || gc.getInput().isKey(KeyEvent.VK_RIGHT)) {
 			dx += MOVE_SPEED;
 			if(dx < MAX_SPEED) {
 				dx = MAX_SPEED;

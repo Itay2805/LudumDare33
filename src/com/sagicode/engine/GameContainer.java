@@ -1,5 +1,6 @@
 package com.sagicode.engine;
 
+import java.applet.Applet;
 import java.awt.Graphics;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -21,6 +22,8 @@ public class GameContainer implements Runnable {
 	
 	private String title = "Game";
 	private int width = 960, height = 720;
+	private boolean isApplet = false;
+	private Applet applet;
 	
 	public GameContainer(AbstractGame game) {
 		this.game = game;
@@ -37,7 +40,11 @@ public class GameContainer implements Runnable {
 			return;
 		}else {
 			Log.info("GameContainer", "Running the game engine.");
-			window = new Window(this);
+			if(isApplet) {
+				window = new Window(this, applet);
+			}else {
+				window = new Window(this);				
+			}
 			input = new Input(this);
 			running = true;
 			thread = new Thread(this, "Game");
@@ -131,6 +138,12 @@ public class GameContainer implements Runnable {
 	
 	public Input getInput() {
 		return input;
+	}
+	
+	public GameContainer setApplet(boolean isApplet, Applet applet) {
+		this.isApplet = isApplet;
+		this.applet = applet;
+		return this;
 	}
 	
 }

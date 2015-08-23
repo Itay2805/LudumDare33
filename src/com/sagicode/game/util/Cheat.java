@@ -7,16 +7,16 @@ public class Cheat {
 	public static ArrayList<String> cheats = new ArrayList<String>();
 	
 	public static void init() {
-		cheats.add("Unu"); // Level 0
-		cheats.add("IAh"); // Level 1
-		cheats.add("Arl"); // Level 2
-		cheats.add("6QY"); // Level 3
-		cheats.add("mQd"); // Level 4
-		cheats.add("84K"); // Level 5
-		cheats.add("Kwo"); // Level 6
-		cheats.add("Xg1"); // Level 7
-		cheats.add("gfF"); // Level 8
-		cheats.add("DUJ"); // Level 9
+		cheats.add("Unu"); // Level 0 (1)
+		cheats.add("IAh"); // Level 1 (2)
+		cheats.add("Arl"); // Level 2 (3)
+		cheats.add("6QY"); // Level 3 (4)
+		cheats.add("mQd"); // Level 4 (5)
+		cheats.add("84K"); // Level 5 (6)
+		cheats.add("Kwo"); // Level 6 (7)
+		cheats.add("Xg1"); // Level 7 (8)
+		cheats.add("gfF"); // Level 8 (9)
+		cheats.add("DUJ"); // Level 9 (10)
 	}
 	
 	public static String getLevel(int level) {

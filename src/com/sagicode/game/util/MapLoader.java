@@ -118,6 +118,12 @@ public class MapLoader {
 		g.setColor(Color.WHITE);
 		g.setFont(new Font("arial", Font.BOLD, 15));
 		g.drawString("Cheat Code: " + Cheat.getLevel(level), 16, 16);
+		if(level == 0) {
+			g.setColor(Color.WHITE);
+			g.setFont(new Font("arial", Font.BOLD, 25));
+			int strLen = (int) g.getFontMetrics().getStringBounds("Use A + D To move and SPACE for jumping", g).getWidth();
+			g.drawString("Use A + D To move and SPACE for jumping", gc.getWidth() / 2 - strLen / 2, gc.getHeight() / 2);
+		}
 	}
 	
 	// Getters And Setters
