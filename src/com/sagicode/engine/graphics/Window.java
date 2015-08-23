@@ -33,6 +33,8 @@ public class Window {
 		frame.setResizable(false);
 		frame.setVisible(true);
 		
+		canvas.requestFocus();
+		
 		canvas.createBufferStrategy(2);
 		bs = canvas.getBufferStrategy();
 		Log.info("Window", "Window Created.");

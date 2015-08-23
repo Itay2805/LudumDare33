@@ -32,7 +32,7 @@ public class Game extends AbstractGame {
 	public static void main(String[] args) {
 		GameContainer gc = new GameContainer(new Game());
 		gc.setHeight(480).setWidth(640);
-		gc.setTitle("Monster Jumpper");
+		gc.setTitle("Monster Jumper");
 		gc.start();
 	}
 
