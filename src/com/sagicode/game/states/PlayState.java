@@ -13,14 +13,12 @@ public class PlayState extends State {
 	
 	public PlayState(GameContainer gc) {
 		loader = new MapLoader();
-		loader.init();
 		loader.load();
 		manager.addObject(new Player(loader));
 	}
 	
 	public PlayState(GameContainer gc, int level) {
 		loader = new MapLoader();
-		loader.init();
 		loader.setLevel(level);
 		loader.load();
 		manager.addObject(new Player(loader));

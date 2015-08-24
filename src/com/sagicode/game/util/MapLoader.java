@@ -3,15 +3,12 @@ package com.sagicode.game.util;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
-
-import javax.imageio.ImageIO;
 
 import com.sagicode.engine.GameContainer;
 import com.sagicode.engine.util.Log;
+import com.sagicode.game.Images;
 import com.sagicode.game.states.ScoreState;
 
 public class MapLoader {
@@ -20,32 +17,8 @@ public class MapLoader {
 	private int tileSize = 32;
 	
 	private int[][] map;
-	private int level = 0;
+	private int level = 10;
 	
-	private BufferedImage grass, dirt, portal, spikes, portal_frame, stone_bricks, stone;
-	
-	public void init() {
-		try {
-			grass = ImageIO.read(getClass().getResourceAsStream("/grass.png"));
-			Log.info("MapLoader", "grass texture loaded");
-			dirt = ImageIO.read(getClass().getResourceAsStream("/dirt.png"));
-			Log.info("MapLoader", "dirt texture loaded");
-			portal = ImageIO.read(getClass().getResourceAsStream("/portal.png"));
-			Log.info("MapLoader", "portal texture loaded");
-			spikes = ImageIO.read(getClass().getResourceAsStream("/spikes.png"));
-			Log.info("MapLoader", "spikes texture loaded");
-			portal_frame = ImageIO.read(getClass().getResourceAsStream("/portal_frame.png"));
-			Log.info("MapLoader", "portal_frame texture loaded");
-			stone_bricks = ImageIO.read(getClass().getResourceAsStream("/wood.png"));
-			Log.info("MapLoader", "stone_bricks texture loaded");
-			stone = ImageIO.read(getClass().getResourceAsStream("/stone.png"));
-			Log.info("MapLoader", "spikes texture loaded");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-	}
-		
 	public void load() {
 		try {
 			BufferedReader in = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/level_" + level + ".map")));
@@ -92,25 +65,25 @@ public class MapLoader {
 						g.fillRect(x * tileSize, y * tileSize, tileSize, tileSize);
 						break;
 					case 1:
-						g.drawImage(grass, x * tileSize, y * tileSize, null);
+						g.drawImage(Images.grass, x * tileSize, y * tileSize, null);
 						break;
 					case 2:
-						g.drawImage(dirt, x * tileSize, y * tileSize, null);
+						g.drawImage(Images.dirt, x * tileSize, y * tileSize, null);
 						break;
 					case 3:
-						g.drawImage(portal, x * tileSize, y * tileSize, null);
+						g.drawImage(Images.portal, x * tileSize, y * tileSize, null);
 						break;
 					case 4:
-						g.drawImage(portal_frame, x * tileSize, y * tileSize, null);
+						g.drawImage(Images.portal_frame, x * tileSize, y * tileSize, null);
 						break;
 					case 5:
-						g.drawImage(stone_bricks, x * tileSize, y * tileSize, null);
+						g.drawImage(Images.stone_bricks, x * tileSize, y * tileSize, null);
 						break;
 					case 6:
-						g.drawImage(stone, x * tileSize, y * tileSize, null);
+						g.drawImage(Images.stone, x * tileSize, y * tileSize, null);
 						break;
 					case 7:
-						g.drawImage(spikes, x * tileSize, y * tileSize, null);
+						g.drawImage(Images.spikes, x * tileSize, y * tileSize, null);
 						break;
 				}
 			}

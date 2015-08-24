@@ -17,6 +17,7 @@ public class Cheat {
 		cheats.add("Xg1"); // Level 7 (8)
 		cheats.add("gfF"); // Level 8 (9)
 		cheats.add("DUJ"); // Level 9 (10)
+		cheats.add("GhB"); // Level 10 (11)
 	}
 	
 	public static String getLevel(int level) {

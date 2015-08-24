@@ -2,15 +2,11 @@ package com.sagicode.game.gameobjects;
 
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 
 import com.sagicode.engine.GameContainer;
 import com.sagicode.engine.components.GameObject;
 import com.sagicode.engine.sounds.SoundClip;
-import com.sagicode.engine.util.Log;
+import com.sagicode.game.Images;
 import com.sagicode.game.states.ScoreState;
 import com.sagicode.game.util.MapLoader;
 
@@ -30,19 +26,10 @@ public class Player extends GameObject {
 	private boolean jumping = false, falling = true;
 	
 	private MapLoader map;
-	
-	private BufferedImage player;
-		
+			
 	public Player(MapLoader map) {
 		jump = new SoundClip("/jump.wav");
 		dead = new SoundClip("/dead.wav");
-		try {
-			player = ImageIO.read(getClass().getResourceAsStream("/monster.png"));
-			Log.info("Player", "Loaded player image");
-		} catch (IOException e1) {
-			Log.error("Player", e1.getMessage());
-			e1.printStackTrace();
-		}
 		this.map = map;
 		w = 20;
 		h = 40;
@@ -178,16 +165,16 @@ public class Player extends GameObject {
 
 	public void render(GameContainer gc, Graphics g) {
 		if(dx > 0) {
-			g.drawImage(player, (int) x, (int) (y - 20), null);
+			g.drawImage(Images.player, (int) x, (int) (y - 20), null);
 			last = true;
 		}else if(dx < 0) {
-			g.drawImage(player, (int)x, (int) (y - 20), (int) -w, (int) h,  null);
+			g.drawImage(Images.player, (int)x, (int) (y - 20), (int) -w, (int) h,  null);
 			last = false;
 		}else {
 			if(last) {
-				g.drawImage(player, (int) x, (int) (y - 20), null);
+				g.drawImage(Images.player, (int) x, (int) (y - 20), null);
 			}else {
-				g.drawImage(player, (int) x, (int) (y - 20), (int) -w, (int) h,  null);
+				g.drawImage(Images.player, (int) x, (int) (y - 20), (int) -w, (int) h,  null);
 			}
 		}
 	}

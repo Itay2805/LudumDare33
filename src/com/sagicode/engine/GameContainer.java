@@ -2,9 +2,6 @@ package com.sagicode.engine;
 
 import java.applet.Applet;
 import java.awt.Graphics;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
 
 import com.sagicode.engine.graphics.Window;
 import com.sagicode.engine.handler.Input;
@@ -30,11 +27,6 @@ public class GameContainer implements Runnable {
 	}
 	
 	public void start() {
-		try {
-			Log.setPrintStream(new PrintStream(new File(title + ".log")));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
 		if(running) {
 			Log.warning("GameContainer", "Attempting to run the game while running.");
 			return;

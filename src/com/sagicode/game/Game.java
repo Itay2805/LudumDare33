@@ -2,9 +2,13 @@ package com.sagicode.game;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 
 import com.sagicode.engine.AbstractGame;
 import com.sagicode.engine.GameContainer;
+import com.sagicode.engine.util.Log;
 import com.sagicode.game.states.MenuState;
 import com.sagicode.game.util.Cheat;
 
@@ -16,7 +20,7 @@ public class Game extends AbstractGame {
 	}
 
 	public void init() {
-		
+		Images.init();
 	}
 
 	public void update(GameContainer gc) {
@@ -30,6 +34,12 @@ public class Game extends AbstractGame {
 	}
 	
 	public static void main(String[] args) {
+		try {
+			Log.setPrintStream(new PrintStream(new File("game.log")));
+		} catch (FileNotFoundException e) {
+			Log.error("GameContainer", "Could not create log file.");
+			e.printStackTrace();
+		}
 		GameContainer gc = new GameContainer(new Game());
 		gc.setHeight(480).setWidth(640);
 		gc.setTitle("Monster Jumper");
