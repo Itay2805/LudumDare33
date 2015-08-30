@@ -17,7 +17,7 @@ public class MapLoader {
 	private int tileSize = 32;
 	
 	private int[][] map;
-	private int level = 10;
+	private int level = 0;
 	
 	public void load() {
 		try {

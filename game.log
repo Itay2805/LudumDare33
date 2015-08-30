@@ -1,0 +1,24 @@
+Info (SoundClip): Loaded sound /select.wav.
+Info (AbstractGame): Pushing game state MenuState
+Info (GameContainer): Running the game engine.
+Info (Window): Window Created.
+Info (Input): Input Handler has started.
+Info (GameContainer): Engine has started.
+Info (ImageLoader): Loading image /monster.png
+Info (ImageLoader): Loading image /grass.png
+Info (ImageLoader): Loading image /dirt.png
+Info (ImageLoader): Loading image /portal.png
+Info (ImageLoader): Loading image /spikes.png
+Info (ImageLoader): Loading image /portal_frame.png
+Info (ImageLoader): Loading image /wood.png
+Info (ImageLoader): Loading image /stone.png
+Info (MapLoader): The map level_10.map has been loaded!
+Info (SoundClip): Loaded sound /jump.wav.
+Info (SoundClip): Loaded sound /dead.wav.
+Info (ObjectManager): Added new object Player (tag: player)
+Info (SoundClip): Loaded sound /select.wav.
+Info (SoundClip): Loaded sound /select.wav.
+Info (MapLoader): The map level_10.map has been loaded!
+Info (SoundClip): Loaded sound /jump.wav.
+Info (SoundClip): Loaded sound /dead.wav.
+Info (ObjectManager): Added new object Player (tag: player)
